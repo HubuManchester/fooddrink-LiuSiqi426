@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <!-- Light Mode Colors -->
+    <Color x:Key="LightBackground">#F2EFE4</Color>
+    <Color x:Key="LightSurface">#FFFFFF</Color>
+    <Color x:Key="LightText">#555555</Color>
+    <Color x:Key="LightPrimary">#D4B0B5</Color>
+    <Color x:Key="LightSecondary">#9CAF88</Color>
+    <Color x:Key="LightCard">#FFFFFF</Color>
+    <Color x:Key="LightBorder">#E0E0E0</Color>
+
+    <!-- Dark Mode Colors -->
+    <Color x:Key="DarkBackground">#1A1A1A</Color>
+    <Color x:Key="DarkSurface">#2D2D2D</Color>
+    <Color x:Key="DarkText">#E0E0E0</Color>
+    <Color x:Key="DarkPrimary">#BC8E87</Color>
+    <Color x:Key="DarkSecondary">#8D948D</Color>
+    <Color x:Key="DarkCard">#3D3D3D</Color>
+    <Color x:Key="DarkBorder">#555555</Color>
+
+    <!-- Morandi Color Palette -->
+    <Color x:Key="MorandiPrimary">#D4B0B5</Color>
+    <Color x:Key="MorandiSecondary">#C49799</Color>
+    <Color x:Key="MorandiLight">#E2C4C6</Color>
+    <Color x:Key="MorandiDark">#BC8E87</Color>
+    <Color x:Key="MorandiGreen">#9CAF88</Color>
+    <Color x:Key="MorandiGreenLight">#A9BA9D</Color>
+    <Color x:Key="MorandiBlue">#6E7F9C</Color>
+    <Color x:Key="MorandiBrown">#B5A89C</Color>
+    <Color x:Key="MorandiOrange">#CC9F6D</Color>
+    <Color x:Key="MorandiGray">#9E9E9E</Color>
+    <Color x:Key="MorandiCream">#F2EFE4</Color>
+    <Color x:Key="MorandiGold">#D8C06A</Color>
+    <Color x:Key="MorandiDarkGray">#555555</Color>
+
+</ResourceDictionary>

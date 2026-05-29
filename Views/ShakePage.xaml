@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodSnap.Views.ShakePage"
+             Title="Shake for Recipe">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="15">
+
+            <!-- Shake Icon -->
+            <Image HeightRequest="100" 
+                   HorizontalOptions="Center"
+                   SemanticProperties.Description="Shake icon - shake your phone to get a random recipe">
+                <Image.Source>
+                    <FontImageSource Glyph="🫨"
+                                     FontFamily="OpenSansRegular"
+                                     Size="70"
+                                     Color="#D4B0B5"/>
+                </Image.Source>
+            </Image>
+
+            <!-- Instruction Label -->
+            <Label 
+                x:Name="instructionLabel"
+                Text="Shake your phone to get a random recipe!"
+                FontSize="16"
+                HorizontalOptions="Center"
+                FontAttributes="Bold"
+                TextColor="#D4B0B5"
+                SemanticProperties.Description="Instruction - tells you to shake your phone"/>
+
+            <!-- Recipe Card Frame -->
+            <Frame 
+                BorderColor="#E0E0E0" 
+                CornerRadius="15" 
+                Padding="15"
+                BackgroundColor="White"
+                HasShadow="True"
+                Margin="0,10,0,0">
+
+                <VerticalStackLayout Spacing="8">
+
+                    <!-- Recipe Name -->
+                    <Label 
+                        x:Name="recipeNameLabel"
+                        Text="???"
+                        FontSize="22"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        TextColor="#C49799"
+                        SemanticProperties.Description="Recipe name - name of the random recipe"/>
+
+                    <!-- Separator Line -->
+                    <BoxView HeightRequest="1" BackgroundColor="#E0E0E0"/>
+
+                    <!-- Ingredients Section -->
+                    <Label 
+                        Text="🥗 Ingredients:"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        TextColor="#9CAF88"
+                        SemanticProperties.Description="Ingredients section title"/>
+
+                    <Label 
+                        x:Name="ingredientsLabel"
+                        Text="Shake your phone to see ingredients"
+                        FontSize="13"
+                        TextColor="#9E9E9E"
+                        SemanticProperties.Description="Ingredients list - list of ingredients for the recipe"/>
+
+                    <!-- Instructions Section -->
+                    <Label 
+                        Text="📖 Instructions:"
+                        FontSize="14"
+                        FontAttributes="Bold"
+                        TextColor="#9CAF88"
+                        Margin="0,5,0,0"
+                        SemanticProperties.Description="Instructions section title"/>
+
+                    <Label 
+                        x:Name="instructionsLabel"
+                        Text="Shake your phone to see instructions"
+                        FontSize="13"
+                        TextColor="#9E9E9E"
+                        LineBreakMode="WordWrap"
+                        SemanticProperties.Description="Instructions - cooking instructions for the recipe"/>
+
+                </VerticalStackLayout>
+
+            </Frame>
+
+            <!-- Control Buttons Row -->
+            <HorizontalStackLayout Spacing="10" 
+                                   HorizontalOptions="Center" 
+                                   Margin="0,10,0,0">
+
+                <!-- Speak Button -->
+                <Button
+                    x:Name="speakButton"
+                    Text="🔊"
+                    Clicked="OnSpeakClicked"
+                    BackgroundColor="#C49799"
+                    TextColor="White"
+                    CornerRadius="25"
+                    WidthRequest="55"
+                    HeightRequest="55"
+                    FontSize="22"
+                    IsEnabled="False"
+                    SemanticProperties.Description="Speak recipe button - reads out the recipe"/>
+
+                <!-- Stop Button -->
+                <Button
+                    x:Name="stopSpeakButton"
+                    Text="⏹️"
+                    Clicked="OnStopSpeakingClicked"
+                    BackgroundColor="#BC8E87"
+                    TextColor="White"
+                    CornerRadius="25"
+                    WidthRequest="55"
+                    HeightRequest="55"
+                    FontSize="22"
+                    SemanticProperties.Description="Stop speaking button - stops current speech"/>
+
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

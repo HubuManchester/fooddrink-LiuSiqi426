@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodSnap.Views.LocationPage"
+             Title="Nearby Places"
+             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="10" Padding="15">
+
+            <Label Text="📍 Find healthy food near you"
+                   FontSize="{DynamicResource TitleFontSize}"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold"
+                   Margin="0,0,0,10"
+                   TextColor="{AppThemeBinding Light={StaticResource LightText}, Dark={StaticResource DarkText}}"/>
+
+            <!-- Button 1: Show My Location -->
+            <Button x:Name="getLocationButton"
+                    Clicked="OnGetLocationClicked"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimary}, Dark={StaticResource DarkPrimary}}"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="55"
+                    Margin="10,5"
+                    SemanticProperties.Description="Get location"
+                    HorizontalOptions="Fill">
+                <Button.Text>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="📍 Show My Location" />
+                        <On Platform="iOS" Value="📍 Show My Location" />
+                    </OnPlatform>
+                </Button.Text>
+            </Button>
+
+            <!-- Button 2: Find Nearby Restaurants -->
+            <Button x:Name="findPlacesButton"
+                    Clicked="OnFindNearbyClicked"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightSecondary}, Dark={StaticResource DarkSecondary}}"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="55"
+                    Margin="10,5"
+                    IsEnabled="False"
+                    SemanticProperties.Description="Find nearby"
+                    HorizontalOptions="Fill">
+                <Button.Text>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="🍽️ Find Nearby Restaurants" />
+                        <On Platform="iOS" Value="🍽️ Find Nearby Restaurants" />
+                    </OnPlatform>
+                </Button.Text>
+            </Button>
+
+            <!-- Button 3: Speak Location Info -->
+            <Button x:Name="speakLocationButton"
+                    Clicked="OnSpeakLocationClicked"
+                    BackgroundColor="#C49799"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="55"
+                    Margin="10,5"
+                    IsEnabled="False"
+                    SemanticProperties.Description="Speak location info"
+                    HorizontalOptions="Fill">
+                <Button.Text>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="🔊 Speak Location Info" />
+                        <On Platform="iOS" Value="🔊 Speak Location Info" />
+                    </OnPlatform>
+                </Button.Text>
+            </Button>
+
+            <!-- Button 4: Stop Speaking -->
+            <Button x:Name="stopSpeakButton"
+                    Clicked="OnStopSpeakingClicked"
+                    BackgroundColor="#BC8E87"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="55"
+                    Margin="10,5"
+                    SemanticProperties.Description="Stop speaking"
+                    HorizontalOptions="Fill">
+                <Button.Text>
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="Android" Value="⏹️ Stop Speaking" />
+                        <On Platform="iOS" Value="⏹️ Stop Speaking" />
+                    </OnPlatform>
+                </Button.Text>
+            </Button>
+
+            <!-- Location display area -->
+            <Frame BorderColor="{AppThemeBinding Light={StaticResource LightBorder}, Dark={StaticResource DarkBorder}}"
+                   CornerRadius="10" Padding="10" Margin="0,15,0,0"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource LightCard}, Dark={StaticResource DarkCard}}">
+                <VerticalStackLayout>
+                    <Label Text="📍 Your Location"
+                           FontAttributes="Bold"
+                           FontSize="{DynamicResource NormalFontSize}"
+                           TextColor="{AppThemeBinding Light={StaticResource LightText}, Dark={StaticResource DarkText}}"/>
+                    <Label x:Name="locationStatusLabel"
+                           Text="Tap 📍 button to get location"
+                           FontSize="12"
+                           TextColor="{AppThemeBinding Light={StaticResource LightTextSecondary}, Dark={StaticResource DarkTextSecondary}}"
+                           LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Nearby restaurants display area -->
+            <Frame BorderColor="{AppThemeBinding Light={StaticResource LightBorder}, Dark={StaticResource DarkBorder}}"
+                   CornerRadius="10" Padding="10"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource LightCard}, Dark={StaticResource DarkCard}}">
+                <VerticalStackLayout>
+                    <Label Text="🍽️ Nearby Restaurants"
+                           FontAttributes="Bold"
+                           FontSize="{DynamicResource NormalFontSize}"
+                           TextColor="{AppThemeBinding Light={StaticResource LightText}, Dark={StaticResource DarkText}}"/>
+                    <Label x:Name="placesListLabel"
+                           Text="Get location first, then tap 🍽️"
+                           FontSize="12"
+                           TextColor="{AppThemeBinding Light={StaticResource LightTextSecondary}, Dark={StaticResource DarkTextSecondary}}"
+                           LineBreakMode="WordWrap"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:FoodSnap.Views"
+       x:Class="FoodSnap.AppShell">
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate views:HomePage}"
+        Route="HomePage">
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="OpenSansRegular"
+                            Glyph="🏠"
+                            Size="Medium"/>
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Scan"
+        ContentTemplate="{DataTemplate views:ScanPage}"
+        Route="ScanPage">
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="OpenSansRegular"
+                            Glyph="📷"
+                            Size="Medium"/>
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Nearby"
+        ContentTemplate="{DataTemplate views:LocationPage}"
+        Route="LocationPage">
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="OpenSansRegular"
+                            Glyph="📍"
+                            Size="Medium"/>
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Shake"
+        ContentTemplate="{DataTemplate views:ShakePage}"
+        Route="ShakePage">
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="OpenSansRegular"
+                            Glyph="📳"
+                            Size="Medium"/>
+        </ShellContent.Icon>
+    </ShellContent>
+
+    <ShellContent
+        Title="Settings"
+        ContentTemplate="{DataTemplate views:SettingsPage}"
+        Route="SettingsPage">
+        <ShellContent.Icon>
+            <FontImageSource FontFamily="OpenSansRegular"
+                            Glyph="⚙️"
+                            Size="Medium"/>
+        </ShellContent.Icon>
+    </ShellContent>
+
+</Shell>
