@@ -14,6 +14,8 @@ namespace FoodSnap.Views
         private Button? largeBtn;
         private Label? themeLabel;
         private Label? previewLabel;
+        private Switch? accessibilitySwitch;
+        private Label? accessibilityStatusLabel;
 
         public SettingsPage()
         {
@@ -62,6 +64,50 @@ namespace FoodSnap.Views
                 HorizontalOptions = LayoutOptions.Center
             };
             layout.Children.Add(themeLabel);
+
+            // NEW: Accessibility Mode Section
+            var accessibilityFrame = new Frame
+            {
+                CornerRadius = 10,
+                Padding = 10,
+                Margin = new Thickness(0, 10, 0, 0),
+                BackgroundColor = Colors.Transparent
+            };
+
+            var accessibilityLayout = new VerticalStackLayout { Spacing = 10 };
+
+            accessibilityLayout.Children.Add(new Label
+            {
+                Text = "♿ Accessibility Mode",
+                FontSize = 16,
+                FontAttributes = FontAttributes.Bold
+            });
+
+            accessibilityLayout.Children.Add(new Label
+            {
+                Text = "When enabled: Larger text, bigger buttons, high contrast",
+                FontSize = 12,
+                TextColor = Colors.Gray
+            });
+
+            var switchRow = new HorizontalStackLayout { Spacing = 15 };
+            accessibilitySwitch = new Switch();
+            accessibilitySwitch.Toggled += OnAccessibilityToggled;
+            switchRow.Add(accessibilitySwitch);
+            switchRow.Add(new Label { Text = "Enable Accessibility Mode", VerticalOptions = LayoutOptions.Center });
+
+            accessibilityLayout.Children.Add(switchRow);
+
+            accessibilityStatusLabel = new Label
+            {
+                Text = "Status: Disabled",
+                FontSize = 12,
+                TextColor = Colors.Gray
+            };
+            accessibilityLayout.Children.Add(accessibilityStatusLabel);
+
+            accessibilityFrame.Content = accessibilityLayout;
+            layout.Children.Add(accessibilityFrame);
 
             // Font Size Grid
             var fontGrid = new Grid
@@ -127,6 +173,12 @@ namespace FoodSnap.Views
             double size = font == "Small" ? 12 : (font == "Large" ? 18 : 14);
             if (previewLabel != null)
                 previewLabel.FontSize = size;
+
+            // Update accessibility UI
+            if (accessibilitySwitch != null)
+                accessibilitySwitch.IsToggled = App.Settings.IsAccessibilityEnabled;
+            if (accessibilityStatusLabel != null)
+                accessibilityStatusLabel.Text = App.Settings.IsAccessibilityEnabled ? "Status: Enabled (Large text, bigger buttons)" : "Status: Disabled";
         }
 
         private async void OnLightModeClicked()
@@ -164,6 +216,19 @@ namespace FoodSnap.Views
             App.Settings.FontSize = "Large";
             App.ApplyUserSettings();
             UpdateUI();
+        }
+
+        private async void OnAccessibilityToggled(object sender, ToggledEventArgs e)
+        {
+            App.Settings.IsAccessibilityEnabled = e.Value;
+            App.ApplyUserSettings();
+            UpdateUI();
+
+            string message = e.Value
+                ? "Accessibility mode enabled.\n\n• Larger text\n• Bigger buttons\n• Better contrast\n\nRestart app for full effect."
+                : "Accessibility mode disabled. Restart app for full effect.";
+
+            await DisplayAlert("Accessibility Mode", message, "OK");
         }
     }
 }

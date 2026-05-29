@@ -41,6 +41,20 @@ public class SettingsService
         }
     }
 
+    // NEW: Accessibility Mode property
+    public bool IsAccessibilityEnabled
+    {
+        get => _settings.IsAccessibilityEnabled;
+        set
+        {
+            if (_settings.IsAccessibilityEnabled != value)
+            {
+                _settings.IsAccessibilityEnabled = value;
+                SaveSettings();
+            }
+        }
+    }
+
     private void LoadSettings()
     {
         try
@@ -69,5 +83,6 @@ public class SettingsService
     {
         public bool IsDarkModeEnabled { get; set; } = false;
         public string FontSize { get; set; } = "Normal";
+        public bool IsAccessibilityEnabled { get; set; } = false;  // NEW
     }
 }

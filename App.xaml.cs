@@ -35,14 +35,20 @@ public partial class App : Application
             Current.UserAppTheme = AppTheme.Light;
         }
 
-        // Apply font size
-        double fontSize = Settings.FontSize switch
+        // Calculate base font size
+        double baseFontSize = Settings.FontSize switch
         {
             "Small" => 12.0,
             "Large" => 18.0,
             "ExtraLarge" => 22.0,
             _ => 14.0
         };
+
+        // Apply accessibility multiplier (1.5x if enabled)
+        double multiplier = Settings.IsAccessibilityEnabled ? 1.5 : 1.0;
+        double fontSize = baseFontSize * multiplier;
+        double buttonFontSize = (baseFontSize + 2) * multiplier;
+        double titleFontSize = (baseFontSize + 8) * multiplier;
 
         // Update app resources
         if (Current.Resources.ContainsKey("NormalFontSize"))
@@ -56,20 +62,31 @@ public partial class App : Application
 
         if (Current.Resources.ContainsKey("ButtonFontSize"))
         {
-            Current.Resources["ButtonFontSize"] = fontSize + 2;
+            Current.Resources["ButtonFontSize"] = buttonFontSize;
         }
         else
         {
-            Current.Resources.Add("ButtonFontSize", fontSize + 2);
+            Current.Resources.Add("ButtonFontSize", buttonFontSize);
         }
 
         if (Current.Resources.ContainsKey("TitleFontSize"))
         {
-            Current.Resources["TitleFontSize"] = fontSize + 8;
+            Current.Resources["TitleFontSize"] = titleFontSize;
         }
         else
         {
-            Current.Resources.Add("TitleFontSize", fontSize + 8);
+            Current.Resources.Add("TitleFontSize", titleFontSize);
+        }
+
+        // Update button height for accessibility
+        double buttonHeight = Settings.IsAccessibilityEnabled ? 70 : 50;
+        if (Current.Resources.ContainsKey("ButtonHeight"))
+        {
+            Current.Resources["ButtonHeight"] = buttonHeight;
+        }
+        else
+        {
+            Current.Resources.Add("ButtonHeight", buttonHeight);
         }
     }
 }
