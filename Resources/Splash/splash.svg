@@ -2,6 +2,6 @@
 	<!-- Full screen pink background -->
 	<rect width="100" height="100" fill="#D4B0B5"/>
 
-	<!-- FoodSnap Text - Very large -->
-	<text x="50" y="55" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#F2EFE4">FoodSnap</text>
+	<!-- FoodSnap Text - Larger font -->
+	<text x="50" y="52" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#F2EFE4">FoodSnap</text>
 </svg>
