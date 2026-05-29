@@ -9,15 +9,16 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- Font Size Resources -->
+            <!-- Dynamic Font Size Resources -->
+            <x:Double x:Key="SmallFontSize">12</x:Double>
             <x:Double x:Key="NormalFontSize">14</x:Double>
+            <x:Double x:Key="MediumFontSize">16</x:Double>
             <x:Double x:Key="LargeFontSize">18</x:Double>
             <x:Double x:Key="TitleFontSize">22</x:Double>
             <x:Double x:Key="ButtonFontSize">16</x:Double>
-            <x:Double x:Key="SmallFontSize">12</x:Double>
             <x:Double x:Key="ButtonHeight">50</x:Double>
 
-            <!-- Global Button Style - More specific to avoid conflicts -->
+            <!-- Global Button Style -->
             <Style TargetType="Button" ApplyToDerivedTypes="True">
                 <Setter Property="FontSize" Value="{StaticResource ButtonFontSize}" />
                 <Setter Property="MinimumHeightRequest" Value="{StaticResource ButtonHeight}" />
@@ -49,6 +50,12 @@
                 <Setter Property="CornerRadius" Value="10" />
                 <Setter Property="HasShadow" Value="False" />
             </Style>
+
+            <!-- Global Entry Style -->
+            <Style TargetType="Entry" ApplyToDerivedTypes="True">
+                <Setter Property="FontSize" Value="{StaticResource NormalFontSize}" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:FoodSnap.Views.Controls"
              x:Class="FoodSnap.Views.ScanPage"
-             Title="Scan Barcode"
-             BackgroundColor="{AppThemeBinding Light={StaticResource LightBackground}, Dark={StaticResource DarkBackground}}">
+             Title="Scan Barcode">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -17,54 +16,36 @@
         </Grid.RowDefinitions>
 
         <!-- Camera preview placeholder -->
-        <Image
-            x:Name="cameraPreviewImage"
-            Grid.Row="0"
-            BackgroundColor="Black"
-            HorizontalOptions="Fill"
-            VerticalOptions="Fill"
-            Aspect="AspectFill">
+        <Image x:Name="cameraPreviewImage" Grid.Row="0" BackgroundColor="Black" 
+               HorizontalOptions="Fill" VerticalOptions="Fill" Aspect="AspectFill">
             <Image.Source>
-                <FontImageSource Glyph="&#x1F4F7;"
-                                FontFamily="OpenSansRegular"
-                                Size="64"
-                                Color="White"/>
+                <FontImageSource Glyph="&#x1F4F7;" FontFamily="OpenSansRegular" Size="64" Color="White"/>
             </Image.Source>
         </Image>
 
         <!-- Scanning area overlay -->
-        <Frame
-            Grid.Row="0"
-            BackgroundColor="Transparent"
-            CornerRadius="0"
-            BorderColor="White"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"
-            WidthRequest="250"
-            HeightRequest="250"
-            HasShadow="False"/>
+        <Frame Grid.Row="0" BackgroundColor="Transparent" CornerRadius="0" BorderColor="White" 
+               HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="250" HeightRequest="250" HasShadow="False"/>
 
-        <!-- Buttons with dynamic font size -->
+        <!-- Take Photo Button -->
         <Button x:Name="captureButton" Grid.Row="1" Text="📷  Take Photo" Clicked="OnCapturePhotoClicked" 
-                BackgroundColor="{AppThemeBinding Light={StaticResource LightPrimary}, Dark={StaticResource DarkPrimary}}"
-                TextColor="White" CornerRadius="10" Margin="30,15,30,5"/>
+                BackgroundColor="#D4B0B5" TextColor="White" CornerRadius="10" HeightRequest="50" Margin="30,15,30,5"/>
 
-        <Button x:Name="simulateButton" Grid.Row="2" Text="🎲  Simulate Scan" Clicked="OnSimulateScanClicked"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LightSecondary}, Dark={StaticResource DarkSecondary}}"
-                TextColor="White" CornerRadius="10" Margin="30,5,30,5"/>
+        <!-- Simulate Scan Button -->
+        <Button x:Name="simulateButton" Grid.Row="2" Text="🎲  Simulate Scan" Clicked="OnSimulateScanClicked" 
+                BackgroundColor="#9E9E9E" TextColor="White" CornerRadius="10" HeightRequest="50" Margin="30,5,30,5"/>
 
-        <Button x:Name="speakButton" Grid.Row="3" Text="🔊  Speak Result" Clicked="OnSpeakLastResultClicked"
-                BackgroundColor="#C49799" TextColor="White" CornerRadius="10" Margin="30,5,30,5" IsEnabled="False"/>
+        <!-- Speak Button -->
+        <Button x:Name="speakButton" Grid.Row="3" Text="🔊  Speak Result" Clicked="OnSpeakLastResultClicked" 
+                BackgroundColor="#C49799" TextColor="White" CornerRadius="10" HeightRequest="50" Margin="30,5,30,5" IsEnabled="False"/>
 
-        <Button x:Name="stopSpeakButton" Grid.Row="4" Text="⏹️  Stop Speaking" Clicked="OnStopSpeakingClicked"
-                BackgroundColor="#BC8E87" TextColor="White" CornerRadius="10" Margin="30,5,30,5"/>
+        <!-- Stop Speaking Button -->
+        <Button x:Name="stopSpeakButton" Grid.Row="4" Text="⏹️  Stop Speaking" Clicked="OnStopSpeakingClicked" 
+                BackgroundColor="#BC8E87" TextColor="White" CornerRadius="10" HeightRequest="50" Margin="30,5,30,5"/>
 
         <!-- Result Label -->
-        <Label x:Name="resultLabel" Grid.Row="5" Text="📷 Take photo or 🎲 simulate scan"
-               FontSize="{DynamicResource NormalFontSize}"
-               HorizontalOptions="Center" 
-               TextColor="{AppThemeBinding Light={StaticResource LightText}, Dark={StaticResource DarkText}}"
-               Margin="20,15,20,20" LineBreakMode="WordWrap"/>
+        <Label x:Name="resultLabel" Grid.Row="5" Text="📷 Take photo or 🎲 simulate scan" 
+               FontSize="14" HorizontalOptions="Center" TextColor="Gray" Margin="20,15,20,20" LineBreakMode="WordWrap"/>
 
         <!-- Loading Overlay -->
         <controls:LoadingOverlay x:Name="loadingOverlay" Grid.RowSpan="6"/>

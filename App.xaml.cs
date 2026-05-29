@@ -1,5 +1,4 @@
 ﻿using FoodSnap.Services;
-using FoodSnap.Styles;
 
 namespace FoodSnap;
 
@@ -46,47 +45,33 @@ public partial class App : Application
 
         // Apply accessibility multiplier (1.5x if enabled)
         double multiplier = Settings.IsAccessibilityEnabled ? 1.5 : 1.0;
-        double fontSize = baseFontSize * multiplier;
-        double buttonFontSize = (baseFontSize + 2) * multiplier;
+        double smallFontSize = 10 * multiplier;
+        double normalFontSize = baseFontSize * multiplier;
+        double mediumFontSize = (baseFontSize + 2) * multiplier;
+        double largeFontSize = (baseFontSize + 4) * multiplier;
         double titleFontSize = (baseFontSize + 8) * multiplier;
+        double buttonFontSize = (baseFontSize + 2) * multiplier;
+        double buttonHeight = Settings.IsAccessibilityEnabled ? 70 : 50;
 
         // Update app resources
-        if (Current.Resources.ContainsKey("NormalFontSize"))
-        {
-            Current.Resources["NormalFontSize"] = fontSize;
-        }
-        else
-        {
-            Current.Resources.Add("NormalFontSize", fontSize);
-        }
+        UpdateResource("SmallFontSize", smallFontSize);
+        UpdateResource("NormalFontSize", normalFontSize);
+        UpdateResource("MediumFontSize", mediumFontSize);
+        UpdateResource("LargeFontSize", largeFontSize);
+        UpdateResource("TitleFontSize", titleFontSize);
+        UpdateResource("ButtonFontSize", buttonFontSize);
+        UpdateResource("ButtonHeight", buttonHeight);
+    }
 
-        if (Current.Resources.ContainsKey("ButtonFontSize"))
+    private static void UpdateResource(string key, object value)
+    {
+        if (Current.Resources.ContainsKey(key))
         {
-            Current.Resources["ButtonFontSize"] = buttonFontSize;
+            Current.Resources[key] = value;
         }
         else
         {
-            Current.Resources.Add("ButtonFontSize", buttonFontSize);
-        }
-
-        if (Current.Resources.ContainsKey("TitleFontSize"))
-        {
-            Current.Resources["TitleFontSize"] = titleFontSize;
-        }
-        else
-        {
-            Current.Resources.Add("TitleFontSize", titleFontSize);
-        }
-
-        // Update button height for accessibility
-        double buttonHeight = Settings.IsAccessibilityEnabled ? 70 : 50;
-        if (Current.Resources.ContainsKey("ButtonHeight"))
-        {
-            Current.Resources["ButtonHeight"] = buttonHeight;
-        }
-        else
-        {
-            Current.Resources.Add("ButtonHeight", buttonHeight);
+            Current.Resources.Add(key, value);
         }
     }
 }

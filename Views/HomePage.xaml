@@ -15,12 +15,12 @@
         <!-- Header -->
         <VerticalStackLayout Grid.Row="0" Spacing="5" Padding="15">
             <Label Text="FoodSnap" 
-                   FontSize="24" 
+                   FontSize="{DynamicResource TitleFontSize}" 
                    FontAttributes="Bold" 
                    HorizontalOptions="Center"
                    TextColor="#D4B0B5"/>
             <Label Text="Your personal nutrition assistant" 
-                   FontSize="14" 
+                   FontSize="{DynamicResource MediumFontSize}" 
                    HorizontalOptions="Center" 
                    TextColor="#555555"/>
         </VerticalStackLayout>
@@ -34,7 +34,7 @@
                     <Grid ColumnDefinitions="*,Auto" ColumnSpacing="5">
                         <Entry x:Name="searchEntry" 
                                Placeholder="Search for food or recipe..." 
-                               FontSize="14"
+                               FontSize="{DynamicResource NormalFontSize}"
                                TextChanged="OnSearchTextChanged"
                                BackgroundColor="Transparent"/>
                         <Button x:Name="searchButton" 
@@ -50,7 +50,9 @@
 
                 <!-- Search Results -->
                 <StackLayout x:Name="searchResultsLayout" IsVisible="False">
-                    <Label Text="Search Results" FontSize="16" FontAttributes="Bold" TextColor="#555555"/>
+                    <Label Text="Search Results" 
+                           FontSize="{DynamicResource MediumFontSize}" 
+                           FontAttributes="Bold" TextColor="#555555"/>
                     <CollectionView x:Name="searchResultsView" 
                                     SelectionMode="Single" 
                                     SelectionChanged="OnSearchResultSelected"/>
@@ -58,15 +60,23 @@
 
                 <!-- Today's Recommendations -->
                 <StackLayout x:Name="recommendationsLayout">
-                    <Label Text="Today's Recommendations" FontSize="16" FontAttributes="Bold" TextColor="#555555"/>
+                    <Label Text="Today's Recommendations" 
+                           FontSize="{DynamicResource MediumFontSize}" 
+                           FontAttributes="Bold" TextColor="#555555"/>
                     <CollectionView x:Name="recommendationsView" 
                                     SelectionMode="Single" 
-                                    SelectionChanged="OnRecommendationSelected"/>
+                                    SelectionChanged="OnRecommendationSelected">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" Span="2"/>
+                        </CollectionView.ItemsLayout>
+                    </CollectionView>
                 </StackLayout>
 
                 <!-- Popular Foods -->
                 <StackLayout Margin="0,10,0,0">
-                    <Label Text="Popular Foods" FontSize="16" FontAttributes="Bold" TextColor="#555555"/>
+                    <Label Text="Popular Foods" 
+                           FontSize="{DynamicResource MediumFontSize}" 
+                           FontAttributes="Bold" TextColor="#555555"/>
                     <CollectionView x:Name="popularFoodsView" 
                                     SelectionMode="Single" 
                                     SelectionChanged="OnPopularFoodSelected"/>
@@ -84,7 +94,7 @@
                 CornerRadius="10"
                 HeightRequest="50"
                 Margin="30,0,30,15"
-                FontSize="16"/>
+                FontSize="{DynamicResource ButtonFontSize}"/>
 
     </Grid>
 </ContentPage>
